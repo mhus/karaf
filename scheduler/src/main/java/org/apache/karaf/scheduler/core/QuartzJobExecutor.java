@@ -49,6 +49,7 @@ public class QuartzJobExecutor implements Job {
         final Logger logger = (karafContext != null) ? (Logger) karafContext.get(QuartzScheduler.DATA_MAP_LOGGER) : LOGGER;
 
         try {
+            //XXX if ()
             logger.debug("Executing job {} with name {}", job, data.get(QuartzScheduler.DATA_MAP_NAME));
             if (job instanceof org.apache.karaf.scheduler.Job) {
                 final InternalScheduleOptions options = (InternalScheduleOptions) data.get(QuartzScheduler.DATA_MAP_OPTIONS);

@@ -51,6 +51,10 @@ public class InternalScheduleOptions implements ScheduleOptions {
     private int times;
     private long period;
     private String expression;
+    private boolean enabled;
+    private Date lastExecution;
+    private long lastExecutionTime;
+    private long executionCount;
 
     public InternalScheduleOptions(Date date) {
         this.date = date;
@@ -79,6 +83,7 @@ public class InternalScheduleOptions implements ScheduleOptions {
     /**
      * @see org.apache.karaf.scheduler.ScheduleOptions#config(java.util.Map)
      */
+    @Override
     public ScheduleOptions config(final Map<String, Serializable> config) {
         this.configuration = config;
         return this;
@@ -87,6 +92,7 @@ public class InternalScheduleOptions implements ScheduleOptions {
     /**
      * @see org.apache.karaf.scheduler.ScheduleOptions#name(java.lang.String)
      */
+    @Override
     public ScheduleOptions name(final String name) {
         this.name = name;
         return this;
@@ -95,6 +101,7 @@ public class InternalScheduleOptions implements ScheduleOptions {
     /**
      * @see org.apache.karaf.scheduler.ScheduleOptions#canRunConcurrently(boolean)
      */
+    @Override
     public ScheduleOptions canRunConcurrently(final boolean flag) {
         this.canRunConcurrently = flag;
         return this;
@@ -163,4 +170,24 @@ public class InternalScheduleOptions implements ScheduleOptions {
         return trigger;
     }
 
+    @Override
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    @Override
+    public long lastExecutionTime() {
+        return lastExecutionTime;
+    }
+
+    @Override
+    public Date lastExecution() {
+        return lastExecution;
+    }
+
+    @Override
+    public long executionCount() {
+        return executionCount;
+    }
+    
 }

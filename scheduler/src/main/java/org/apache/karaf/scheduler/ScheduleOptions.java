@@ -17,6 +17,7 @@
 package org.apache.karaf.scheduler;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Map;
 
 /**
@@ -60,4 +61,12 @@ public interface ScheduleOptions extends Serializable {
 
     String schedule();
 
+    boolean isEnabled();
+    
+    long lastExecutionTime();
+    
+    Date lastExecution();
+    
+    long executionCount();
+    
 }
